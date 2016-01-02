@@ -1,11 +1,92 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link href="css/common.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.pagepiling.css" type="text/css" rel="stylesheet" />
+<style>
+html{overflow:hidden;width:100%;height:100%;}
+body{width:100%;height:100%;}
+#page1{width:100%;height:100%;position:relative;}
+canvas{position:absolute;}
+</style>
+
 </head>
 
 <body>
-个人网站
+<div id="pagepiling">
+    <div class="section">
+    	<div id="page1">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <div class="section">
+    </div>
+    <div class="section">
+    </div>
+    <div class="section">
+    </div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.pagepiling.min.js"></script>
+<script>
+var oC=document.getElementById('canvas');
+var gd=oC.getContext('2d');
+var winW = window.innerWidth;
+var winH = window.innerHeight;
+var N = 120;
+var minDis=75;
+var state=2;
+var ret=[];
+var fr=[];
+var hi=[];
+var we=[];
+var deleteLog = false;
+$(document).ready(function() {
+    $('#pagepiling').pagepiling({
+        menu: null,
+        verticalCentered: true,
+        sectionsColor: ['#009966', '#009966', '#009966','#009966'],
+        anchors: ['page1', 'page2', 'page3','page4'],
+        scrollingSpeed: 700,
+        easing: 'swing',
+        loopBottom: false,
+        loopTop: false,
+        css3: true,
+        navigation: {
+            'textColor': '#000',
+            'bulletsColor': '#000',
+            'position': 'right',
+            'tooltips': ['home page', 'introduce', 'skills', 'contact way']
+        },
+        normalScrollElements: null,
+        normalScrollElementTouchThreshold: 5,
+        touchSensitivity: 5,
+        keyboardScrolling: true,
+        sectionSelector: '.section',
+        animateAnchor: false,
+
+        //events
+        onLeave: function(index, nextIndex, direction){},
+        afterLoad: function(anchorLink, index){}
+    });
+});
+$(function(){
+	cSize(oC);
+	oC.width = winW;
+	oC.height = winH;
+	oC.onclick=function(){
+		state++;
+		state%=10;	
+	}
+	draw();
+	window.onresize=function(){
+		cSize(oC);
+	};
+});
+
+</script>
 </body>
 </html>
