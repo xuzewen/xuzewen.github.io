@@ -176,7 +176,7 @@ function fontPos(imageSrc,array,count,num){
 				array.push(j);	
 			}
 		}
-		//console.log(array.length)
+		//console.log(array.join(','))
 	};
 	oImg.src = imageSrc;
 }
