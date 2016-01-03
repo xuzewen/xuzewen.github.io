@@ -3,12 +3,12 @@ function draw(){
 	var aPoint = [];
 	fontPos("images/click.png",ret,0);
 	fontPos("images/hi.png",hi,6);
-	fontPos("images/friend.png",fr,12);
+	fontPos("images/stranger.png",fr,12,42);
 	fontPos("images/welcome.png",we,18,35);
 	for(var i = 0; i < N; i++){
 		aPoint[i] = {
 			r:rnd(5,10),
-			alpha:Math.random(),
+			alpha:Math.random()*0.7+0.3,
 			x:rnd(0,winW),
 			y:rnd(0,winH),
 			speedX:rnd(-0.3,0.3),
@@ -25,7 +25,7 @@ function draw(){
 			if(state==9) setEight(aPoint[i],i*(720/N),i);
 			if(state==2) setFont(aPoint[i],i,ret);
 			if(state==3) setFont(aPoint[i],i,hi);
-			if(state==4) setFont(aPoint[i],i,fr);
+			if(state==4) setFont(aPoint[i],i,fr,42);
 			if(state==5) setFont(aPoint[i],i,we,35);
 			drawPoint(aPoint[i]);
 			switch (state){
@@ -176,7 +176,7 @@ function fontPos(imageSrc,array,count,num){
 				array.push(j);	
 			}
 		}
-		//console.log(array.join(','))
+		console.log(array.join(','))
 	};
 	oImg.src = imageSrc;
 }
