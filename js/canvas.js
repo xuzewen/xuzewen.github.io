@@ -1,5 +1,4 @@
 function draw(){
-	//创建点
 	var aPoint = [];
 	fontPos("images/click.png",ret,0);
 	fontPos("images/hi.png",hi,6);
@@ -60,7 +59,6 @@ function draw(){
 		}
 	},16);
 }
-//state 0 圆点随机运动
 function move(aPoint,i){
 	aPoint[i].x += aPoint[i].speedX;
 	aPoint[i].y += aPoint[i].speedY;
@@ -84,13 +82,11 @@ function move(aPoint,i){
 		aPoint[i].speedY *= -1;
 	}	
 }
-//state 2 3 4 5 6 7 8 9去目标位置
 function toTarget(aPoint,i,n){
 	n=n||20;
 	aPoint[i].x += (aPoint[i].tx-aPoint[i].x)/n;
 	aPoint[i].y += (aPoint[i].ty-aPoint[i].y)/n;
 }
-//绘制点
 function drawPoint(p){
 	if(Math.abs(p.speedX)<0.15){
 		p.speedX+=p.speedX<0?-0.15:0.15;
@@ -104,7 +100,6 @@ function drawPoint(p){
 	gd.fillStyle = "rgba(187,187,187,"+p.alpha+")";
 	gd.fill();
 }
-//连接判断 state 1
 function spring(a, b) {
 	var dx = b.x - a.x,
 	dy = b.y - a.y,
@@ -121,7 +116,6 @@ function spring(a, b) {
 	  return true;
 	}
  }
-//设置圆形位置
 function setCircle(point,ang){
 	var a=Math.sin(a2r(ang))*winH/3;
 	var b=Math.cos(a2r(ang))*winH/3;
@@ -129,7 +123,6 @@ function setCircle(point,ang){
 	point.tx=winW/2+a;
 	point.ty=winH/2-b;	
 }
-//设置8字形位置
 function setEight(point,ang,i){
 	var a=Math.sin(a2r(ang))*winH/4;
 	var b=Math.cos(a2r(ang))*winH/4;
@@ -142,17 +135,14 @@ function setEight(point,ang,i){
 		point.ty=winH/4*3-b;
 	}
 }
-//设置横线
 function setLine(point,lx){
 	point.tx=lx;
 	point.ty=winH/2;
 }
-//抖动
 function shake(aPoint,i){
 	if(Math.abs(aPoint[i].x-aPoint[i].tx)<1) aPoint[i].x+=2;
 	if(Math.abs(aPoint[i].y-aPoint[i].ty)<1) aPoint[i].y+=2;	
 }
-//获取图像像素点位置
 function fontPos(imageSrc,array,count,num){
 	num=num||31;
 	var oImg = new Image();
@@ -176,11 +166,10 @@ function fontPos(imageSrc,array,count,num){
 				array.push(j);	
 			}
 		}
-		console.log(array.join(','))
+		//console.log(array.join(','))
 	};
 	oImg.src = imageSrc;
 }
-//设置文字像素点位置
 function setFont(aPoint,i,array,num){
 	num=num||31;
 	i%=array.length;
