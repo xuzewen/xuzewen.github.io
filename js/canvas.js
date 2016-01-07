@@ -1,9 +1,9 @@
 $(function(){
 	var oC=document.getElementById('canvas');
 	var gd=oC.getContext('2d');
-	var winW = window.innerWidth;
-	var winH = window.innerHeight;
-	var N = 100;
+	var winW=window.innerWidth;
+	var winH=window.innerHeight;
+	var N=100;
 	var minDis=75;
 	var state=2;
 	//像素级操作需要服务器环境,故直接在本地取值方便上传Git
@@ -12,8 +12,8 @@ $(function(){
 	var hi=[55,56,57,58,59,62,67,70,71,72,73,74,80,84,85,86,87,88,89,90,94,100,101,102,104];
 	var we=[0,1,2,3,9,11,12,13,19,20,21,22,23,30,31,32,33,34,35,37,39,40,42,44,45,47,49,55,56,57,58,59,64,69,76,77,78,80,84,85,89,90,94,101,102,103,105,109,110,114,116,117,118,125,126,127,128,129,131,137,141,145,146,147,148,149,155,156,157,158,159,160,162,164,165,167,169,170,172,174];
 	cSize(oC);
-	oC.width = winW;
-	oC.height = winH;
+	oC.width=winW;
+	oC.height=winH;
 	oC.onclick=function(){
 		state++;
 		state%=10;	
@@ -29,8 +29,8 @@ $(function(){
 		fontPos("images/hi.png",hi,6);
 		fontPos("images/stranger.png",fr,12,42);
 		fontPos("images/welcome.png",we,18,35);*/
-		for(var i = 0; i < N; i++){
-			aPoint[i] = {
+		for(var i=0;i<N;i++){
+			aPoint[i]={
 				r:rnd(5,10),
 				alpha:Math.random()*0.7+0.3,
 				x:rnd(0,winW),
@@ -58,9 +58,9 @@ $(function(){
 					break;	
 					case 1:
 						move(aPoint,i);
-						for (var b, j = i + 1; j < N; j++) {
-							b = aPoint[j];
-							spring(aPoint[i], b);
+						for (var b,j=i+1;j<N;j++) {
+							b=aPoint[j];
+							spring(aPoint[i],b);
 						}
 					break;
 					case 8:
@@ -85,32 +85,32 @@ $(function(){
 		},16);
 	}
 	function move(aPoint,i){
-		aPoint[i].x += aPoint[i].speedX;
-		aPoint[i].y += aPoint[i].speedY;
+		aPoint[i].x+=aPoint[i].speedX;
+		aPoint[i].y+=aPoint[i].speedY;
 		
-		if(aPoint[i].x < 0+aPoint[i].r){
-			aPoint[i].x = 0+aPoint[i].r;
-			aPoint[i].speedX *= -1;
+		if(aPoint[i].x<0+aPoint[i].r){
+			aPoint[i].x=0+aPoint[i].r;
+			aPoint[i].speedX*=-1;
 		}
 		
-		if(aPoint[i].x > winW-aPoint[i].r){
-			aPoint[i].x = winW-aPoint[i].r;
-			aPoint[i].speedX *= -1;
+		if(aPoint[i].x>winW-aPoint[i].r){
+			aPoint[i].x=winW-aPoint[i].r;
+			aPoint[i].speedX*=-1;
 		}
-		if(aPoint[i].y < 0+aPoint[i].r){
-			aPoint[i].y = 0+aPoint[i].r;
-			aPoint[i].speedY *= -1;
+		if(aPoint[i].y<0+aPoint[i].r){
+			aPoint[i].y=0+aPoint[i].r;
+			aPoint[i].speedY*=-1;
 		}
 		
-		if(aPoint[i].y > winH-aPoint[i].r){
+		if(aPoint[i].y>winH-aPoint[i].r){
 			aPoint[i].y = winH-aPoint[i].r;
-			aPoint[i].speedY *= -1;
+			aPoint[i].speedY*=-1;
 		}	
 	}
 	function toTarget(aPoint,i,n){
 		n=n||20;
-		aPoint[i].x += (aPoint[i].tx-aPoint[i].x)/n;
-		aPoint[i].y += (aPoint[i].ty-aPoint[i].y)/n;
+		aPoint[i].x+=(aPoint[i].tx-aPoint[i].x)/n;
+		aPoint[i].y+=(aPoint[i].ty-aPoint[i].y)/n;
 	}
 	function drawPoint(p){
 		if(Math.abs(p.speedX)<0.15){
@@ -125,18 +125,18 @@ $(function(){
 		gd.fillStyle = "rgba(187,187,187,"+p.alpha+")";
 		gd.fill();
 	}
-	function spring(a, b) {
-		var dx = b.x - a.x,
-		dy = b.y - a.y,
-		dis = Math.sqrt(dx * dx + dy * dy);
+	function spring(a,b){
+		var dx=b.x-a.x,
+		dy=b.y-a.y,
+		dis=Math.sqrt(dx*dx+dy*dy);
 	
-		if (dis< minDis) {
-		  var alpha = 1 - dis / minDis;
-		  gd.strokeStyle = "rgba(187,187,187,"+alpha+")";
+		if(dis< minDis){
+		  var alpha=1-dis/minDis;
+		  gd.strokeStyle="rgba(187,187,187,"+alpha+")";
 		  gd.beginPath();
 		  gd.lineWidth="2";
-		  gd.moveTo(a.x, a.y);
-		  gd.lineTo(b.x, b.y);
+		  gd.moveTo(a.x,a.y);
+		  gd.lineTo(b.x,b.y);
 		  gd.stroke();
 		  return true;
 		}
@@ -170,16 +170,16 @@ $(function(){
 	}
 	function fontPos(imageSrc,array,count,num){
 		num=num||31;
-		var oImg = new Image();
+		var oImg=new Image();
 		var arr=[];
-		oImg.onload = function(){
+		oImg.onload=function(){
 			gd.drawImage(oImg,0,count);
-			var result = gd.getImageData(0,count,num,5);
-			var imageData = result.data;
-			for (var x = 0; x < num; x++){
-				for (var y = 0; y < 5; y++){
-					var i = 4*(y * num + x);
-					if (imageData[i] > 100){
+			var result=gd.getImageData(0,count,num,5);
+			var imageData=result.data;
+			for (var x=0; x<num;x++){
+				for (var y=0;y<5;y++){
+					var i=4*(y*num+x);
+					if(imageData[i]>100){
 						arr.push(1);
 					}else{
 						arr.push(0);
@@ -193,7 +193,7 @@ $(function(){
 			}
 			//console.log(array.join(','))
 		};
-		oImg.src = imageSrc;
+		oImg.src=imageSrc;
 	}
 	function setFont(aPoint,i,array,num){
 		num=num||31;
