@@ -50,7 +50,7 @@ function addMouseWheel(obj,fn){
 //运动函数封装
 function move(obj,json,optional){
 	optional=optional||{};
-	optional.time=optional.time||800;
+	optional.time=optional.time||700;
 	optional.type=optional.type||'ease-out';
 	var start={};
 	var dis={};

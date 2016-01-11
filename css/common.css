@@ -21,6 +21,29 @@ legend{color:#000}
 a{text-decoration:none;color:#000;}
 #yui3-css-stamp.cssreset{display:none}
 
+html{overflow:hidden;width:100%;height:100%;}
+body{width:100%;height:100%;}
+#page1{width:100%;height:100%;position:relative;}
+#canvas{position:absolute;}
+
+.f36{font-size:36px;font-weight:bolder;}
+.f30{font-size:30px;font-weight:bold;}
+.f24{font-size:24px;}
+#main{position:relative;width:100%;height:100%;}
+#main .page{position:absolute;width:100%;height:100%;left:0;top:0;}
+#main .page_2,.page_3,.page_4{color:#bbbbbb;text-align:center;}
+#main .box{position:absolute;left:50%;top:50%;transform:translate(-50%,-70%);}
+#main a{color:#bbbbbb;}
+.box p{line-height:30px;}
+.box p span{padding:10px;}
+#main .title{font-size:40px;font-weight:bolder;line-height:150px;}
+#main .page_1{z-index:4;background:#009966;}
+#main .page_2{z-index:3;background:#2C3E50;}
+#main .page_3{z-index:2;background:#336699;}
+#main .page_4{z-index:1;background:#336633;}
+#side{position:fixed;z-index:5;top:50%;right:10px;transform:translateY(-50%);}
+#side li{width:10px;height:10px;border:1px solid #000;margin:8px;border-radius:50%;cursor:pointer;}
+#side .cur{background:#000;}
 
 /*清浮动*/
 .clearfix:before,.clearfix:after{content:"";display:table;clear:both;}
