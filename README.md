@@ -1,3 +1,3 @@
 # xuzewen.github.io
 
-<a href="xuzewen.github.io">xuzewen.github.io</a>
+<a href="http://xuzewen.github.io/">xuzewen.github.io</a>
